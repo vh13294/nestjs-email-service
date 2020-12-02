@@ -5,9 +5,11 @@ npm i handlebars
 npm i mjml
 npm i @types/mjml
 
+// Handlebars partials == components
+// Register all partials  with .mjml
+// add VS-Code MJML
+
 ## TODO
-- [ ] Create test (expiration, query clash, tampered, with or without globalPrefix, request with query & param)
+- [ ] Create test
 - [ ] Renovate Automated dependency updates
 - [ ] Automate CI, npm run build, push, npm publish
-- [ ] Add warning if target for signerUrl doesn't have guard
-- [ ] Add doc about generating a secure key

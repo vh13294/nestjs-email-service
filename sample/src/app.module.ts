@@ -1,16 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config/dist/config.module';
-import { EmailModule } from './emailModule/email.module';
-import { urlGeneratorModuleConfig } from './config/signed-url.config';
-import { UrlGeneratorModule } from 'nestjs-url-generator';
+import { EmailModule } from 'nestjs-email-service';
+import path from 'path';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    UrlGeneratorModule.forRootAsync({
-      useFactory: () => urlGeneratorModuleConfig(),
+    EmailModule.forRoot({
+      apiKey: '123',
+      templateDir: path.join(__dirname, 'emailTemplate')
     }),
-    EmailModule,
   ],
   providers: [],
 })

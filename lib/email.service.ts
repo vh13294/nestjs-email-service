@@ -3,11 +3,12 @@ import { Inject, Injectable } from '@nestjs/common';
 import { EmailModuleOptions } from './email-options.interface';
 import { EMAIL_MODULE_OPTIONS } from './email.constants';
 
-import { compileTemplate } from './helpers';
-import { EmailMetaData } from './interfaces';
+import { compileTemplate, registerPartials } from './helpers';
+import { EmailData, EmailMetaData } from './interfaces';
 
 import { ClientResponse } from '@sendgrid/client/src/response';
-import { MailDataRequired, send, setApiKey } from '@sendgrid/mail';
+import { send, setApiKey } from '@sendgrid/mail';
+import path from 'path';
 
 @Injectable()
 export class EmailService {
@@ -20,25 +21,29 @@ export class EmailService {
     } else {
       setApiKey(emailModuleOptions.apiKey);
     }
+
+    if (!this.emailModuleOptions.templateDir) {
+      this.emailModuleOptions.templateDir = process.cwd();
+    }
+
+    registerPartials(this.emailModuleOptions.templateDir);
   }
 
-  public async sendText(
-    metaData: EmailMetaData,
-    text: string,
-  ): Promise<[ClientResponse, {}]> {
-    const emailData = {
-      ...metaData,
-      text: text,
-    };
+  private prependRootDir(relativePath: string) {
+    return path.join(this.emailModuleOptions.templateDir, relativePath);
+  }
+
+  public async send(emailData: EmailData): Promise<[ClientResponse, {}]> {
     return send(emailData);
   }
 
-  public async sendHtml(
+  public async sendMjml(
     metaData: EmailMetaData,
-    html: string,
+    mjmlPath: string,
     templateData: unknown,
   ): Promise<[ClientResponse, {}]> {
-    const compiledHtml = compileTemplate(html, templateData);
+    const templatePath = this.prependRootDir(mjmlPath);
+    const compiledHtml = compileTemplate(templatePath, templateData);
     const emailData = {
       ...metaData,
       html: compiledHtml,
@@ -50,8 +55,8 @@ export class EmailService {
   // [{to: a.com, html: directory, dataToRender: {}}, {to: b.com, html: directory, dataToRender: {}}]
 
   // [{to: a.com, html | text: 1}, {to: b.com, html | text: 2}]
-  public async sendTextMultiple(
-    emailData: MailDataRequired[],
+  public async sendMultiple(
+    emailData: EmailData[],
   ): Promise<[ClientResponse, {}]> {
     return send(emailData);
   }

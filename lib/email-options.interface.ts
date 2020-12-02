@@ -1,8 +1,9 @@
 import { ModuleMetadata, Type } from '@nestjs/common';
 
 export interface EmailModuleOptions {
-  // secret?: string;
   apiKey: string;
+  // path.join(__dirname, 'email_templates')
+  templateDir: string;
 }
 
 export interface EmailAsyncModuleOptions
