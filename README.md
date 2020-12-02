@@ -3,6 +3,7 @@
 npm i @sendgrid/mail
 npm i handlebars
 npm i mjml
+npm i @types/mjml
 
 ## TODO
 - [ ] Create test (expiration, query clash, tampered, with or without globalPrefix, request with query & param)

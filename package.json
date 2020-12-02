@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.4.0",
+    "@types/mjml": "^4.0.4",
     "handlebars": "^4.7.6",
     "mjml": "^4.7.1"
   }

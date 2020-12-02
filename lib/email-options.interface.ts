@@ -2,7 +2,7 @@ import { ModuleMetadata, Type } from '@nestjs/common';
 
 export interface EmailModuleOptions {
   // secret?: string;
-  appKey: string;
+  apiKey: string;
 }
 
 export interface EmailAsyncModuleOptions
