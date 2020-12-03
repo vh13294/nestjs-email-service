@@ -1,15 +1,18 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config/dist/config.module';
 import { EmailModule } from 'nestjs-email-service';
-import path from 'path';
+import { RegisterModule } from './registerModule/register.module';
+
+import { join } from 'path';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     EmailModule.forRoot({
-      apiKey: '123',
-      templateDir: path.join(__dirname, 'emailTemplate')
+      apiKey: 'SG.123',
+      templateDir: join(process.env.PWD, 'src', 'emailTemplate'),
     }),
+    RegisterModule,
   ],
   providers: [],
 })

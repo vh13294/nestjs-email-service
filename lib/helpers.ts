@@ -1,17 +1,16 @@
-import { BadRequestException } from '@nestjs/common';
 import { compile, registerPartial } from 'handlebars';
 import { promises as fs } from 'fs';
 import mjml2html from 'mjml';
-import path from 'path';
+import { join } from 'path';
 
 // compile handlebars {{}} template (in mjml)
 export function compileTemplate(rawHtml: string, data: unknown): string {
   const template = compile(rawHtml);
   const templateWithInjectedData = template(data);
-  const mjml = mjml2html(templateWithInjectedData);
-  if (mjml.errors) {
-    throw new BadRequestException(mjml.errors.toString());
-  }
+
+  const mjml = mjml2html(templateWithInjectedData, {
+    validationLevel: 'strict',
+  });
   return mjml.html;
 }
 
@@ -25,7 +24,7 @@ export async function registerPartials(templateDir: string): Promise<void> {
       return;
     }
     const name = matches[1];
-    const filePath = path.join(templateDir, name);
+    const filePath = join(templateDir, `${name}.mjml`);
     const template = await fs.readFile(filePath, 'utf8');
     registerPartial(filePath, template);
   });

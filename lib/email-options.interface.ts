@@ -2,7 +2,8 @@ import { ModuleMetadata, Type } from '@nestjs/common';
 
 export interface EmailModuleOptions {
   apiKey: string;
-  // path.join(__dirname, 'email_templates')
+  // join(__dirname, 'email_templates')
+  // join(process.env.PWD, 'src', 'email_templates')
   templateDir: string;
 }
 

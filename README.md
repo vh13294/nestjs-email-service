@@ -9,6 +9,9 @@ npm i @types/mjml
 // Register all partials  with .mjml
 // add VS-Code MJML
 
+// When importing this lib /src/emailTemplate will not be in /dist
+// => Need the whole repository on production (to include the templates)
+
 ## TODO
 - [ ] Create test
 - [ ] Renovate Automated dependency updates
