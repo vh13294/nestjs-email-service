@@ -9,7 +9,7 @@ npm i @types/mjml
 Handlebars partials == components
 Register partials  with .mjml
 add VS-Code MJML
-
+add VS-Code handlebars ??
 
 ## Assets not in /dist
 When importing this lib /src/emailTemplate will not be in /dist
@@ -60,6 +60,8 @@ const app = await NestFactory.create<NestExpressApplication>(
 app.useStaticAssets(join(process.env.PWD, 'src', 'emailTemplate', 'serveStatic'));
 // file will be available at root URL: http://localhost:3000/image.png
 ```
+
+## Or better use CDN for images GOOGLE CDN cost 0.02/GB traffic
 
 ## TODO
 - [ ] Create test

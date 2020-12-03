@@ -1,4 +1,4 @@
-import { BadRequestException, Controller, Get } from '@nestjs/common';
+import { BadRequestException, Controller, Get, Param } from '@nestjs/common';
 
 import { EmailService } from 'nestjs-email-service';
 
@@ -7,7 +7,7 @@ export class RegisterController {
   constructor(private readonly emailService: EmailService) {}
 
   @Get('sendEmail')
-  async target(): Promise<void> {
+  async sendEmail(): Promise<void> {
     const emailMetaData = {
       to: 'jam.com',
       from: 'vh.uk',
@@ -24,14 +24,10 @@ export class RegisterController {
     }
   }
 
-  @Get('viewEmail')
-  async viewEmail(): Promise<string> {
-    const emailMetaData = {
-      to: 'a@target',
-      from: 'a@sender',
-      subject: 'hi',
-    };
-    const templatePath = 'test.mjml';
+  @Get('viewEmail/:id')
+  async viewEmail(@Param('id') id: string): Promise<string> {
+    // 1 to 7 tests
+    const templatePath = `${id}.mjml`;
 
     try {
       return await this.emailService.getRenderedMjml(templatePath, {

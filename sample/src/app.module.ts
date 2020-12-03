@@ -10,7 +10,8 @@ import { join } from 'path';
     ConfigModule.forRoot(),
     EmailModule.forRoot({
       apiKey: 'SG._hc',
-      templateDir: join(process.env.PWD, 'src', 'emailTemplate'),
+      templateDir: join(process.env.PWD, 'src', 'emailTemplate', 'pages'),
+      partialsDir: join(process.env.PWD, 'src', 'emailTemplate', 'partials'),
     }),
     RegisterModule,
   ],
