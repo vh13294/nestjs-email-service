@@ -6,28 +6,36 @@ import { EmailService } from 'nestjs-email-service';
 export class RegisterController {
   constructor(private readonly emailService: EmailService) {}
 
-  @Get('sendEmail1')
-  async target(): Promise<string> {
+  @Get('sendEmail')
+  async target(): Promise<void> {
 
     const emailMetaData = {
-      to: 'abc@abc.com',
-      from: 'abc@abc.com',
+      to: 'jam.com',
+      from: 'vh.uk',
       subject: 'hi',
     }
-
     const templatePath = 'test.mjml'
     
     try {
       await this.emailService.sendMjml(emailMetaData, templatePath, { name: 'Bro' })
     } catch (error) {
-      console.log(error)
-      throw new BadRequestException(error)
+      throw new BadRequestException(error.response.body.errors[0])
     }
-    return 'success';
   }
 
-  @Get('sendEmail2')
-  async makeUrl(): Promise<string> {
-    return 'success';
+  @Get('viewEmail')
+  async viewEmail(): Promise<string> {
+    const emailMetaData = {
+      to: 'a@target',
+      from: 'a@sender',
+      subject: 'hi',
+    }
+    const templatePath = 'test.mjml'
+    
+    try {
+      return await this.emailService.getRenderedMjml(templatePath, { name: 'Bro' })
+    } catch (error) {
+      throw new BadRequestException(error)
+    }
   }
 }

@@ -12,6 +12,13 @@ npm i @types/mjml
 // When importing this lib /src/emailTemplate will not be in /dist
 // => Need the whole repository on production (to include the templates)
 
+// getRenderedMjml for previewing
+
+
+// test
+to: 'jam__7',
+from: 'vh_uk',
+
 ## TODO
 - [ ] Create test
 - [ ] Renovate Automated dependency updates
