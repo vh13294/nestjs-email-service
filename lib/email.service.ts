@@ -18,7 +18,7 @@ export class EmailService {
     private readonly emailModuleOptions: EmailModuleOptions,
   ) {
     if (!this.emailModuleOptions.apiKey) {
-      throw new Error('The app url must not be empty');
+      throw new Error('The app key must not be empty');
     } else {
       setApiKey(emailModuleOptions.apiKey);
     }

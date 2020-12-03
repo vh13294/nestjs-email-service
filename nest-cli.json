@@ -1,6 +1,6 @@
 {
   "projects": {
-    "nestjs-url-generator": {
+    "nestjs-email-service": {
       "type": "library",
       "root": "lib",
       "entryFile": "lib/index",

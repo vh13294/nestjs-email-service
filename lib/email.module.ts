@@ -17,14 +17,14 @@ import { EMAIL_MODULE_OPTIONS } from './email.constants';
 @Module({})
 export class EmailModule {
   public static forRoot(options: EmailModuleOptions): DynamicModule {
-    const urlGeneratorOptionsProvider: ValueProvider<EmailModuleOptions> = {
+    const emailServiceOptionsProvider: ValueProvider<EmailModuleOptions> = {
       provide: EMAIL_MODULE_OPTIONS,
       useValue: options,
     };
 
     return {
       module: EmailModule,
-      providers: [urlGeneratorOptionsProvider, EmailService],
+      providers: [emailServiceOptionsProvider, EmailService],
       exports: [EmailService],
     };
   }
