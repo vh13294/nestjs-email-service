@@ -24,10 +24,12 @@ export class EmailService {
     }
 
     if (!this.emailModuleOptions.templateDir) {
-      this.emailModuleOptions.templateDir = process.cwd();
+      throw new Error('The template directory location must not be empty');
     }
 
-    registerPartials(this.emailModuleOptions.templateDir);
+    if (this.emailModuleOptions.partialsDir) {
+      registerPartials(this.emailModuleOptions.partialsDir);
+    }
   }
 
   private async getFile(relativePath: string): Promise<string> {

@@ -8,18 +8,19 @@ export class RegisterController {
 
   @Get('sendEmail')
   async target(): Promise<void> {
-
     const emailMetaData = {
       to: 'jam.com',
       from: 'vh.uk',
       subject: 'hi',
-    }
-    const templatePath = 'test.mjml'
-    
+    };
+    const templatePath = 'test.mjml';
+
     try {
-      await this.emailService.sendMjml(emailMetaData, templatePath, { name: 'Bro' })
+      await this.emailService.sendMjml(emailMetaData, templatePath, {
+        name: 'Bro',
+      });
     } catch (error) {
-      throw new BadRequestException(error.response.body.errors[0])
+      throw new BadRequestException(error.response.body.errors[0]);
     }
   }
 
@@ -29,13 +30,15 @@ export class RegisterController {
       to: 'a@target',
       from: 'a@sender',
       subject: 'hi',
-    }
-    const templatePath = 'test.mjml'
-    
+    };
+    const templatePath = 'test.mjml';
+
     try {
-      return await this.emailService.getRenderedMjml(templatePath, { name: 'Bro' })
+      return await this.emailService.getRenderedMjml(templatePath, {
+        name: 'Bro',
+      });
     } catch (error) {
-      throw new BadRequestException(error)
+      throw new BadRequestException(error);
     }
   }
 }

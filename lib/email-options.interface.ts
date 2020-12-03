@@ -5,6 +5,7 @@ export interface EmailModuleOptions {
   // join(__dirname, 'email_templates')
   // join(process.env.PWD, 'src', 'email_templates')
   templateDir: string;
+  partialsDir?: string;
 }
 
 export interface EmailAsyncModuleOptions
