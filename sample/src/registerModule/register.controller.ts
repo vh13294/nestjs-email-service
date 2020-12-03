@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { BadRequestException, Controller, Get } from '@nestjs/common';
 
 import { EmailService } from 'nestjs-email-service';
 
@@ -17,7 +17,12 @@ export class RegisterController {
 
     const templatePath = 'test.mjml'
     
-    this.emailService.sendMjml(emailMetaData, templatePath, { name: 'Bro'})
+    try {
+      await this.emailService.sendMjml(emailMetaData, templatePath, { name: 'Bro' })
+    } catch (error) {
+      console.log(error)
+      throw new BadRequestException(error)
+    }
     return 'success';
   }
 

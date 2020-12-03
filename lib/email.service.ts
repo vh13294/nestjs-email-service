@@ -8,7 +8,8 @@ import { EmailData, EmailMetaData } from './interfaces';
 
 import { ClientResponse } from '@sendgrid/client/src/response';
 import { send, setApiKey } from '@sendgrid/mail';
-import path from 'path';
+import { join } from 'path';
+import { promises as fs } from 'fs';
 
 @Injectable()
 export class EmailService {
@@ -29,8 +30,19 @@ export class EmailService {
     registerPartials(this.emailModuleOptions.templateDir);
   }
 
-  private prependRootDir(relativePath: string) {
-    return path.join(this.emailModuleOptions.templateDir, relativePath);
+  private async getFile(relativePath: string): Promise<string> {
+    const path = join(this.emailModuleOptions.templateDir, relativePath);
+    return fs.readFile(path, 'utf-8');
+  }
+
+  // for testing
+  public async getRenderedMjml(
+    mjmlPath: string,
+    templateData: unknown,
+  ): Promise<string> {
+    const mjml = await this.getFile(mjmlPath);
+    const compiledHtml = compileTemplate(mjml, templateData);
+    return compiledHtml;
   }
 
   public async send(emailData: EmailData): Promise<[ClientResponse, {}]> {
@@ -42,8 +54,8 @@ export class EmailService {
     mjmlPath: string,
     templateData: unknown,
   ): Promise<[ClientResponse, {}]> {
-    const templatePath = this.prependRootDir(mjmlPath);
-    const compiledHtml = compileTemplate(templatePath, templateData);
+    const mjml = await this.getFile(mjmlPath);
+    const compiledHtml = compileTemplate(mjml, templateData);
     const emailData = {
       ...metaData,
       html: compiledHtml,
