@@ -3,8 +3,12 @@
 NestJS module that integrate with
 
 npm i @sendgrid/mail
+
 npm i handlebars
+// replace with vue render? not a good idea might clash with mjml syntax(like in-line)
+
 npm i mjml
+
 npm i @types/mjml
 
 ## Handlebars setup
@@ -51,6 +55,7 @@ The API will not return or generate response
 
 
 ## Serve Static Files & Images
+// Good for prototyping & testing
 
 ```typescript
 import { NestExpressApplication } from '@nestjs/platform-express';
@@ -64,6 +69,8 @@ app.useStaticAssets(join(process.env.PWD, 'src', 'emailTemplate', 'serveStatic')
 ```
 
 ## Or better use CDN for images GOOGLE CDN cost 0.02/GB traffic
+
+## Can also use dropbox as CDN (serve folder)
 
 ## TODO
 - [ ] Create test
