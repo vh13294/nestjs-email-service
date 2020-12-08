@@ -6,6 +6,7 @@ npm i @sendgrid/mail
 
 npm i handlebars
 // replace with vue render? not a good idea might clash with mjml syntax(like in-line)
+// features too complicated
 
 npm i mjml
 
@@ -22,23 +23,6 @@ When importing this lib /src/emailTemplate will not be in /dist
 => Need the whole repository on production (to include the templates)
 using process.env.PWD
 
-- Alternative nest-cli.json
-```json
-{
-    "collection": "@nestjs/schematics",
-    "sourceRoot": "src",
-    "compilerOptions": {
-        "webpack": false,
-        "assets": [
-            "**/*.hbs"
-        ],
-        "watchAssets": true
-    },
-    "generateOptions": {
-        "spec": false
-    }
-}
-```
 
 ## Previewing
 service.getRenderedMjml(path, data)
