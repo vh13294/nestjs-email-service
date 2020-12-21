@@ -25,7 +25,7 @@
     "@nestjs/common": "^7.5.5",
     "@nestjs/core": "^7.5.5",
     "@nestjs/platform-express": "^7.5.5",
-    "nestjs-email-service": "file:../compiled-lib.tgz",
+    "nestjs-email-service": "file:nestjs-email-service-0.0.1.tgz",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.3"
