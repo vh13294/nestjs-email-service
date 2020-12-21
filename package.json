@@ -36,6 +36,7 @@
     "jest": "26.6.3",
     "prettier": "^2.2.1",
     "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
     "rxjs": "^6.6.3",
     "ts-jest": "26.4.4",
     "typescript": "^4.1.2"
@@ -46,7 +47,6 @@
   "dependencies": {
     "@sendgrid/mail": "^7.4.0",
     "handlebars": "^4.7.6",
-    "mjml": "^4.7.1",
-    "rimraf": "^3.0.2"
+    "mjml": "^4.7.1"
   }
 }
