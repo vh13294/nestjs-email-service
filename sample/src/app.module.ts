@@ -4,10 +4,7 @@ import { RegisterModule } from './registerModule/register.module';
 import { emailModuleOptions } from './config/emailModule.config';
 
 @Module({
-  imports: [
-    EmailModule.forRoot(emailModuleOptions()),
-    RegisterModule,
-  ],
+  imports: [EmailModule.forRoot(emailModuleOptions()), RegisterModule],
   providers: [],
 })
 export class AppModule {}
