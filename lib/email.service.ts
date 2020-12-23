@@ -37,6 +37,17 @@ export class EmailService {
     return fs.readFile(path, 'utf-8');
   }
 
+  public async send(emailData: EmailData): Promise<[ClientResponse, unknown]> {
+    return send(emailData);
+  }
+
+  // [{to: a.com, html | text: 1}, {to: b.com, html | text: 2}]
+  public async sendMultiple(
+    emailData: EmailData[],
+  ): Promise<[ClientResponse, unknown]> {
+    return send(emailData);
+  }
+
   // for testing
   public async getRenderedMjml(
     mjmlPath: string,
@@ -47,15 +58,11 @@ export class EmailService {
     return compiledHtml;
   }
 
-  public async send(emailData: EmailData): Promise<[ClientResponse, {}]> {
-    return send(emailData);
-  }
-
   public async sendMjml(
     metaData: EmailMetaData,
     mjmlPath: string,
     templateData: unknown,
-  ): Promise<[ClientResponse, {}]> {
+  ): Promise<[ClientResponse, unknown]> {
     const mjml = await this.getFile(mjmlPath);
     const compiledHtml = compileTemplate(mjml, templateData);
     const emailData = {
@@ -67,11 +74,4 @@ export class EmailService {
 
   // todo add another method
   // [{to: a.com, html: directory, dataToRender: {}}, {to: b.com, html: directory, dataToRender: {}}]
-
-  // [{to: a.com, html | text: 1}, {to: b.com, html | text: 2}]
-  public async sendMultiple(
-    emailData: EmailData[],
-  ): Promise<[ClientResponse, {}]> {
-    return send(emailData);
-  }
 }
