@@ -1,6 +1,6 @@
 import { BadRequestException, Controller, Get } from '@nestjs/common';
 
-import { EmailService, welcomeUser } from 'nestjs-email-service';
+import { EmailService, Template } from 'nestjs-email-service';
 
 @Controller()
 export class HomeController {
@@ -14,7 +14,7 @@ export class HomeController {
       subject: 'hi',
     };
 
-    const template = welcomeUser({
+    const template = Template.welcomeUser({
       name: 'jam',
       email: 'jam@jam.com',
     });
@@ -28,10 +28,19 @@ export class HomeController {
 
   @Get('viewEmail')
   async viewEmail(): Promise<string> {
-    const template = welcomeUser({
-      name: 'jam',
-      email: 'jam@jam.com',
-    });
+    // const template = Template.welcomeUser({
+    //   name: 'jam',
+    //   email: 'jam@jam.com',
+    // });
+
+    // const template = Template.home({
+    //   name: 'name',
+    //   address: 'address',
+    // });
+
+    // const template = Template.marketingOne();
+
+    const template = Template.marketingTwo();
 
     try {
       return await this.emailService.getRenderedMjml(template);
