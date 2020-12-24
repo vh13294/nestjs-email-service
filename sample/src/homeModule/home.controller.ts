@@ -9,8 +9,8 @@ export class HomeController {
   @Get('sendEmail')
   async sendEmail(): Promise<void> {
     const emailMetaData = {
-      to: 'jam.com',
-      from: 'vh.uk',
+      to: 'jam_.com',
+      from: 'vh_@my',
       subject: 'hi',
     };
 
