@@ -1,12 +1,5 @@
-import {
-  DynamicModule,
-  Global,
-  Module,
-  ValueProvider,
-} from '@nestjs/common';
-import {
-  EmailModuleOptions,
-} from './email-options.interface';
+import { DynamicModule, Global, Module, ValueProvider } from '@nestjs/common';
+import { EmailModuleOptions } from './interfaces/email-options.interface';
 import { EmailService } from './email.service';
 import { EMAIL_MODULE_OPTIONS } from './email.constants';
 
