@@ -28,18 +28,6 @@ export class HomeController {
 
   @Get('viewEmail')
   async viewEmail(): Promise<string> {
-    // const template = Template.welcomeUser({
-    //   name: 'jam',
-    //   email: 'jam@jam.com',
-    // });
-
-    // const template = Template.home({
-    //   name: 'name',
-    //   address: 'address',
-    // });
-
-    // const template = Template.marketingOne();
-
     const template = Template.marketingTwo();
 
     try {

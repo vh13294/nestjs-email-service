@@ -41,6 +41,12 @@ async sendEmail(): Promise<void> {
 
 service.getRenderedMjml(template: React.ReactElement)
 
+use npm node-html-to-image to output image
+
+Test specific file
+
+- npm test -- file
+
 ## Testing Addresses
 
 to: 'jam\_\_7',
@@ -56,5 +62,3 @@ The API will not return or generate response
 ## TODO
 
 - [ ] Create test
-- [ ] Renovate Automated dependency updates
-- [ ] Automate CI, npm run build, push, npm publish
