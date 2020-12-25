@@ -39,13 +39,15 @@ async sendEmail(): Promise<void> {
 
 ## Previewing
 
-service.getRenderedMjml(template: React.ReactElement)
+- service.getRenderedMjml(template: React.ReactElement)
 
-use npm node-html-to-image to output image
+- use npm node-html-to-image to output image
 
-Test specific file
+- Test specific file: npm test -- file
 
-- npm test -- file
+## Live Preview Development
+
+- npm run preview
 
 ## Testing Addresses
 
