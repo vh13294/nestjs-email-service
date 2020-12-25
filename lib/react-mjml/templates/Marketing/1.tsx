@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Mjml,
   MjmlHead,
@@ -18,7 +19,6 @@ import {
   MjmlSocialElement,
   MjmlGroup,
 } from 'mjml-react';
-import React from 'react';
 
 export function marketingOne(): React.ReactElement {
   return (

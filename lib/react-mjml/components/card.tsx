@@ -6,7 +6,11 @@ interface CardProps {
   paragraph?: string;
 }
 
-const cards: CardProps[] = [{ title: 'a' }, { title: 'b' }, { title: 'c' }];
+const cards: CardProps[] = [
+  { title: 'a', paragraph: 'paragraph1' },
+  { title: 'b', paragraph: 'paragraph2' },
+  { title: 'c', paragraph: 'paragraph3' },
+];
 
 const renderCards = () =>
   cards.map((card, index) => {

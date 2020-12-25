@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Mjml,
   MjmlHead,
@@ -42,6 +43,11 @@ export function welcomeUser(user: User): React.ReactElement {
           </MjmlColumn>
         </MjmlSection>
         <Card title="test1" paragraph="yo"></Card>
+        <MjmlSection fullWidth backgroundColor="#efefef">
+          <MjmlColumn>
+            <MjmlImage src="https://res.cloudinary.com/vh13294/image/upload/v1608871142/cat_m7qarm.jpg" />
+          </MjmlColumn>
+        </MjmlSection>
       </MjmlBody>
     </Mjml>
   );

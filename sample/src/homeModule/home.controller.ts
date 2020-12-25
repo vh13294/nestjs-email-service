@@ -1,13 +1,13 @@
 import { BadRequestException, Controller, Get } from '@nestjs/common';
 
-import { EmailService, Template } from 'nestjs-email-service';
+import { ClientResponse, EmailService, Template } from 'nestjs-email-service';
 
 @Controller()
 export class HomeController {
   constructor(private readonly emailService: EmailService) {}
 
   @Get('sendEmail')
-  async sendEmail(): Promise<void> {
+  async sendEmail(): Promise<[ClientResponse, unknown]> {
     const emailMetaData = {
       to: 'jam_.com',
       from: 'vh_@my',
@@ -20,7 +20,7 @@ export class HomeController {
     });
 
     try {
-      await this.emailService.sendMjml(emailMetaData, template);
+      return await this.emailService.sendMjml(emailMetaData, template);
     } catch (error) {
       throw new BadRequestException(error.response.body.errors[0]);
     }
