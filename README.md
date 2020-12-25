@@ -3,15 +3,10 @@
 NestJS Email module that make use of react-mjml with
 
 - Type safety template
+
 - Integrate nicely nestjs
 
-## Install
-
-npm i @sendgrid/mail
-
-npm i react react-dom mjml mjml-react
-
-npm i @types/react @types/react-dom --save-dev
+- @sendgrid/mail
 
 ## Example
 
@@ -37,7 +32,7 @@ async sendEmail(): Promise<void> {
 }
 ```
 
-## Previewing
+## Previewing Mjml
 
 - service.getRenderedMjml(template: React.ReactElement)
 
@@ -45,7 +40,7 @@ async sendEmail(): Promise<void> {
 
 - Test specific file: npm test -- file
 
-## Live Preview Development
+## Live Preview Development react-mjml
 
 - npm run preview
 
