@@ -77,7 +77,11 @@
     "transform": {
       "^.+\\.(ts|js|tsx)$": "ts-jest"
     },
-    "coverageDirectory": "../coverage",
+    "collectCoverage": true,
+    "coverageDirectory": "./test/coverage",
+    "collectCoverageFrom": [
+      "./lib/react-mjml/templates/**/*.tsx"
+    ],
     "testEnvironment": "node",
     "testTimeout": 100000
   }

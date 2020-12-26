@@ -1,11 +1,11 @@
 import { render } from 'mjml-react';
-import { Template } from '../../lib';
+import { Template } from '../../../lib';
 import nodeHtmlToImage from 'node-html-to-image';
 
-const name = 'Template.marketingOne';
+const name = 'Template.marketingTwo';
 
 describe(name, () => {
-  const template = Template.marketingOne();
+  const template = Template.marketingTwo();
 
   it('should return html', async () => {
     const { html } = render(template);
