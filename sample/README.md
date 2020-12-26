@@ -10,3 +10,8 @@ $ npm install
 # watch mode
 $ npm run start:dev
 ```
+
+## Testing Addresses
+
+to: 'jam\_\_7',
+from: 'vh_uk',
