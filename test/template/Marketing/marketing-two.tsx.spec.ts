@@ -2,7 +2,7 @@ import { render } from 'mjml-react';
 import { Template } from '../../../lib';
 import nodeHtmlToImage from 'node-html-to-image';
 
-const name = 'Template.marketingTwo';
+const name = Template.marketingTwo.name;
 
 describe(name, () => {
   const template = Template.marketingTwo();

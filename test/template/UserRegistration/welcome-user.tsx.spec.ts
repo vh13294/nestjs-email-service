@@ -2,7 +2,7 @@ import { render } from 'mjml-react';
 import { Template } from '../../../lib';
 import nodeHtmlToImage from 'node-html-to-image';
 
-const name = 'Template.welcomeUser';
+const name = Template.welcomeUser.name;
 
 describe(name, () => {
   const template = Template.welcomeUser({
